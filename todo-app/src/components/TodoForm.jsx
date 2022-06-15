@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export const TodoForm = ({addTodo, addTodoLeft}) => {
+export const TodoForm = ({addTodo, addTodoLeft, lightMode}) => {
     const[input, setInput] = useState('');
 
     const inputSubmit = e =>{
@@ -18,7 +18,7 @@ export const TodoForm = ({addTodo, addTodoLeft}) => {
     }
 
     return (
-        <form onSubmit={inputSubmit} className='todoform'>
+        <form onSubmit={inputSubmit} className={`todoform${lightMode ? " todoform-light" : ""}`}>
             <div className="circleform"></div>
             <input type="text" placeholder='Create a new todo...' onChange={inputChange} value={input} className='todoform-input'/>
         </form>

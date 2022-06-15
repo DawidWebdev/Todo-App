@@ -7,6 +7,7 @@ import { useState } from 'react';
 const App = () => {
   const[todos, setTodos] = useState([]);
   const[todoleft, setTodosLeft] = useState(0);
+  const[lightMode, setLightMode] = useState(false);
 
   const addTodo = (text) =>{
     let id = 1;
@@ -38,29 +39,43 @@ const App = () => {
     setTodos(newTodos);
   }
 
+  const clearCompletedTasks = () =>{
+    let completedTasks = todos.filter((todo) => todo.completed == false)
+    setTodos(completedTasks); 
+  }
+
   const addTodoLeft = (int) =>{
     setTodosLeft(todoleft + int);
   }
 
+  const switchMode = () =>{
+    if(lightMode){setLightMode(false);}
+    else{setLightMode(true);}
+  }
+
   return (
-    <main>
+    <main className={`main${lightMode ? " main-light" : ""}`}>
       <header>
         <h1 className='todo-header'>TODO</h1>
-        <button className='switch-button'><img src={sunimg} className='switch-icon'></img></button>
+        <button className='switch-button' onClick={()=>{
+          switchMode();
+        }}><img src={sunimg} className='switch-icon'></img></button>
       </header>
 
       <section>
-        <TodoForm addTodo={addTodo} addTodoLeft={addTodoLeft}/>
+        <TodoForm addTodo={addTodo} addTodoLeft={addTodoLeft} lightMode={lightMode}/>
         <ul>
           {todos.map((todo) => {
             return(
-              <Todo todo={todo} key={todo.id} removeTodo={removeTodo} addTodoLeft={addTodoLeft}/>
+              <Todo todo={todo} key={todo.id} removeTodo={removeTodo} addTodoLeft={addTodoLeft} lightMode={lightMode}/>
             )
           })}
         </ul>
         <div className='tasks'>
           <div className='tasks-left'>{todoleft} items left</div>
-          <button className='tasks-clear'>Clear Completed</button>
+          <button className='tasks-clear' onClick={()=>{
+            clearCompletedTasks();
+          }}>Clear Completed</button>
         </div>
       </section>
     </main>

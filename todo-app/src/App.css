@@ -1,19 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
-:root{
---Bright-Blue: hsl(220, 98%, 61%);
---Very-Light-Gray: hsl(0, 0%, 98%);
---Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
---Light-Grayish-Blue: hsl(233, 11%, 84%);
---Dark-Grayish-Blue: hsl(236, 9%, 61%);
---Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
---Very-Dark-Blue: hsl(235, 21%, 11%);
---Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
---Light-Grayish-Blue: hsl(234, 39%, 85%);
---Light-Grayish-Blue: hsl(236, 33%, 92%);
---Dark-Grayish-Blue: hsl(234, 11%, 52%);
---Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
---Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
-}
 
 body
 {
@@ -21,7 +6,38 @@ body
     font-weight: 400;
     background-color: var(--Very-Dark-Blue);
     font-family: 'Josefin Sans', sans-serif;
-    margin: 0rem 2rem;
+    margin: 0;
+}
+
+.main 
+{
+    background-color: var(--Very-Dark-Blue);
+    height: 100vh;
+    --Bright-Blue: hsl(220, 98%, 61%);
+    --Very-Light-Gray: hsl(0, 0%, 98%);
+    --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+    --Light-Grayish-Blue: hsl(233, 11%, 84%);
+    --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+    --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+    --Very-Dark-Blue: hsl(235, 21%, 11%);
+    --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+    --Light-Grayish-Blue: hsl(234, 39%, 85%);
+    --Light-Grayish-Blue: hsl(236, 33%, 92%);
+    --Dark-Grayish-Blue: hsl(234, 11%, 52%);
+    --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+    --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+    --Circle-color: rgb(255, 255, 255);
+    --Tasks-color: rgb(255, 255, 255);
+    transition: all .3s ease;
+}
+
+.main-light
+{
+    background-color: var(--Dark-Grayish-Blue);
+    --Very-Dark-Desaturated-Blue: white;
+    --Circle-color: rgb(0, 0, 0);
+    --Tasks-color: rgb(0, 0, 0);
+    --Light-Grayish-Blue: hsl(0, 2%, 9%);
 }
 
 ul
@@ -43,7 +59,7 @@ header
 {
     display: flex;
     justify-content: space-between;
-    margin: 2rem 0rem 2rem 0rem;
+    margin: 2rem;
 }
 
 .todo-header 
@@ -68,14 +84,14 @@ header
     display: flex;
     align-items: center;
     border-radius: 5px;
-    margin-bottom: 2rem;
+    margin: 0rem 2rem 2rem 2rem;
 }
 
 .circleform
 {
     height: 20px;
     width: 20px;
-    border: 2px solid white;
+    border: 2px solid var(--Circle-color);
     opacity: .2;
     border-radius: 50%;
     margin-left: 1rem;
@@ -87,7 +103,7 @@ header
 {
     height: 24px;
     width: 24px;
-    border: 2px solid white;
+    border: 2px solid var(--Circle-color);
     opacity: .2;
     border-radius: 50%;
     margin-left: 1rem;
@@ -126,6 +142,7 @@ header
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0rem 2rem;
 }
 
 .todo:not(:first-child)::after
@@ -164,7 +181,7 @@ header
 {
     position: absolute;
     content: '';
-    background-color: white;
+    background-color: var(--Tasks-color);
     height: 1.5px;
     width: 100%;
     top: 50%;
@@ -192,16 +209,16 @@ header
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1rem;
     border-radius: 5px;
+    margin: 1rem 2rem 2rem 2rem;
 }
 
 .tasks-left
 {
     margin-left: 1rem;
     font-size: 13px;
-    color: white;
     opacity: .3;
+    color: var(--Tasks-color);
 }
 
 .tasks-clear
@@ -209,6 +226,69 @@ header
     margin-right: 1rem;
     font-size: 13px;
     font-family: 'Josefin Sans', sans-serif;    
-    color: white;
     opacity: .3;
+    color: var(--Tasks-color);
+}
+
+@media screen and (min-width: 768px) {
+    .todoform
+    {
+        width: 700px;
+        height: 50px;
+        background-color: var(--Very-Dark-Desaturated-Blue);
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        margin-bottom: 2rem;
+    }
+
+    .todo
+    {
+        position: relative;
+        width: 700px;
+        height: 50px;
+        background-color: var(--Very-Dark-Desaturated-Blue);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .tasks
+    {
+        position: relative;
+        width: 700px;
+        height: 50px;
+        background-color: var(--Very-Dark-Desaturated-Blue);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1rem;
+        border-radius: 5px;
+    }
+
+    main
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: top;
+        align-items: center;
+    }
+    header 
+    {
+        width: 700px;
+    }
+
+    .switch-button img
+    {
+        transition: all .3s ease-in-out;
+    }
+    .switch-button:hover img
+    {
+        cursor: pointer;
+        transform: translateX(-5px);
+    }
+    .switch-button:target
+    {
+        background-color: red;
+    }
 }
